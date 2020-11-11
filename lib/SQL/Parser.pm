@@ -1735,6 +1735,7 @@ sub non_parens_search
     }
     else
     {
+        $xstr =~ s/\?LI(\d+)\?/$self->{struct}{list_ids}[$1]/g;
         $xstr =~ s/\?(\d+)\?/$self->{struct}{literals}[$1]/g;
         ( $k, $v ) = $xstr =~ /^(\S+?)\s+\S+\s*(.+)\s*$/;
     }
