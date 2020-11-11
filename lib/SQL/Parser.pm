@@ -1715,7 +1715,6 @@ sub non_parens_search
     my ( $k, $v );
     if ( $str =~ /^\s*([A-Z]\p{Word}*)\s*\[/gcs )
     {
-
         #
         #	we've got a function, check if its a singleton
         #
@@ -1737,7 +1736,7 @@ sub non_parens_search
     {
         $xstr =~ s/\?LI(\d+)\?/$self->{struct}{list_ids}[$1]/g;
         $xstr =~ s/\?(\d+)\?/$self->{struct}{literals}[$1]/g;
-        ( $k, $v ) = $xstr =~ /^(\S+?)\s+\S+\s*(.+)\s*$/;
+        ( $k, $v ) = $xstr =~ /^(?:NOT\s+)?(\S+?)\s+\S+\s*(.+)\s*$/;
     }
     push @{ $self->{struct}{where_cols}{$k} }, $v
       if defined $k;
